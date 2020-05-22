@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class OdometerField extends StatefulWidget {
@@ -15,6 +16,8 @@ class _OdometerFieldState extends State<OdometerField> {
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 16, 28, 28),
       child: TextFormField(
+        inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly],
+        keyboardType: TextInputType.number,
         focusNode: widget.focus,
         decoration: InputDecoration(
           icon: Icon(MdiIcons.counter),
@@ -23,7 +26,7 @@ class _OdometerFieldState extends State<OdometerField> {
         ),
         validator: (value) {
           if (value.isEmpty) {
-            return 'Please enter some text';
+            return 'Enter valid odometer';
           }
           return null;
         },

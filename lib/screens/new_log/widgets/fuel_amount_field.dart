@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class FuelAmountField extends StatefulWidget {
@@ -16,7 +17,10 @@ class _FuelAmountFieldState extends State<FuelAmountField> {
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 16, 28, 16),
       child: TextFormField(
+        inputFormatters: [BlacklistingTextInputFormatter(new RegExp('[\\-|\\ ]'))], // Blocks everything expect numbers, dots and commas
+        keyboardType: TextInputType.number,
         onFieldSubmitted: (v) {
+          // This makes the focus shift to the next text field when clicking ok from keyboard
           FocusScope.of(context).requestFocus(widget.focus);
         },
         autofocus: true,
@@ -27,7 +31,7 @@ class _FuelAmountFieldState extends State<FuelAmountField> {
         ),
         validator: (value) {
           if (value.isEmpty) {
-            return 'Please enter some text';
+            return 'Enter valid amount';
           }
           return null;
         },
