@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fuel_consumption_tracker/screens/history/history_screen.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
+import 'package:get/get.dart';
 
 class ViewHistoryButton extends StatefulWidget {
   @override
@@ -13,7 +15,9 @@ class _ViewHistoryButtonState extends State<ViewHistoryButton> {
       width: MediaQuery.of(context).size.width / 2,
       child: FlatButton(
         shape: Styles.roundShape,
-        onPressed: () {},
+        onPressed: () {
+          Get.to(HistoryScreen());
+        },
         child: Container(
           margin: EdgeInsets.all(12),
           child: Text(
