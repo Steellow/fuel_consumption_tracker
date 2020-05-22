@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
 
 class SubmitButton extends StatefulWidget {
+  final GlobalKey<FormState> formkey;
+
+  SubmitButton(this.formkey);
+
   @override
   _SubmitButtonState createState() => _SubmitButtonState();
 }
@@ -16,7 +20,11 @@ class _SubmitButtonState extends State<SubmitButton> {
           child: RaisedButton(
             color: Colors.indigo,
             shape: Styles.roundShape,
-            onPressed: () {},
+            onPressed: () {
+              if(widget.formkey.currentState.validate()) {
+                print("aASDFASDF");
+              }
+            },
             child: Container(
               margin: EdgeInsets.all(12),
               child: Text('Submit', style: Styles.whiteBold.copyWith(fontSize: 24)),

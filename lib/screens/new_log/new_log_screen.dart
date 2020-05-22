@@ -29,7 +29,7 @@ class NewLogScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SubmitButton(),
+              SubmitButton(formKey),
             ],
           ),
         ),
