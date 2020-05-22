@@ -19,7 +19,7 @@ class _FuelAmountFieldState extends State<FuelAmountField> {
       padding: EdgeInsets.fromLTRB(16, 16, 28, 16),
       child: TextFormField(
         controller: widget.textEditingController,
-        inputFormatters: [BlacklistingTextInputFormatter(new RegExp('[\\-|\\ ]'))], // Blocks everything expect numbers, dots and commas
+        inputFormatters: [BlacklistingTextInputFormatter(new RegExp('[\\-|\\ |\\,]'))], // Blocks everything expect numbers and dots
         keyboardType: TextInputType.number,
         onFieldSubmitted: (v) {
           // This makes the focus shift to the next text field when clicking ok from keyboard
@@ -28,7 +28,7 @@ class _FuelAmountFieldState extends State<FuelAmountField> {
         autofocus: true,
         decoration: InputDecoration(
           icon: Icon(MdiIcons.gasStation),
-          labelText: "Spent liters",
+          labelText: "Fuel amount",
           suffixText: "L",
         ),
         validator: (value) {

@@ -12,5 +12,6 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - submit button to FAB?
 - autohide keyboard on main screen
 - datetime field to add_log page
-- list reverse order
 - autopop new_log
+- cancel button to new_log
+- auto odometer to fuel_fueld
