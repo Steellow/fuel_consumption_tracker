@@ -4,8 +4,10 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 class OdometerField extends StatefulWidget {
   final FocusNode focus;
+  final TextEditingController textEditingController;
 
-  OdometerField(this.focus);
+  OdometerField(this.focus, this.textEditingController);
+
   @override
   _OdometerFieldState createState() => _OdometerFieldState();
 }
@@ -16,6 +18,7 @@ class _OdometerFieldState extends State<OdometerField> {
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 16, 28, 28),
       child: TextFormField(
+        controller: widget.textEditingController,
         inputFormatters: <TextInputFormatter>[
           WhitelistingTextInputFormatter.digitsOnly,
           LengthLimitingTextInputFormatter(6),

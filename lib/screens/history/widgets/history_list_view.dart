@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:fuel_consumption_tracker/models/log.dart';
+import 'package:hive/hive.dart';
 
 class HistoryListView extends StatefulWidget {
   @override
@@ -7,18 +8,12 @@ class HistoryListView extends StatefulWidget {
 }
 
 class _HistoryListViewState extends State<HistoryListView> {
-  Widget _buildItem(DateTime dt, int distance, String formattedDate) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12),
-      child: Card(
-        elevation: 4,
-        child: ListTile(
-          title: Text("18.37L"),
-          subtitle: Text(distance.toString() + "km"),
-          trailing: Text(formattedDate),
-        ),
-      ),
-    );
+  Box logBox;
+
+  @override
+  void initState() {
+    super.initState();
+    logBox = Hive.box('logs');
   }
 
   @override
@@ -26,14 +21,26 @@ class _HistoryListViewState extends State<HistoryListView> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.83,
       child: ListView.builder(
-        itemCount: 30,
+        itemCount: logBox.length,
         itemBuilder: (context, index) {
-          int distance = (100123 + index);
-          DateTime now = DateTime.now();
-          String formattedDate = DateFormat('dd.MM.yyyy').format(now);
+          final log = logBox.getAt(index) as Log;
 
-          return _buildItem(now, distance, formattedDate);
+          return _buildItem(log);
         },
+      ),
+    );
+  }
+
+  Widget _buildItem(Log log) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 12),
+      child: Card(
+        elevation: 4,
+        child: ListTile(
+          title: Text(log.amount.toString() + "L"),
+          subtitle: Text(log.odometer.toString() + "km"),
+          trailing: Text(log.date.toString()),
+        ),
       ),
     );
   }

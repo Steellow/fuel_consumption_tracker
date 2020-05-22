@@ -4,8 +4,9 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 class FuelAmountField extends StatefulWidget {
   final FocusNode focus;
+  final TextEditingController textEditingController;
 
-  FuelAmountField(this.focus);
+  FuelAmountField(this.focus, this.textEditingController);
 
   @override
   _FuelAmountFieldState createState() => _FuelAmountFieldState();
@@ -17,6 +18,7 @@ class _FuelAmountFieldState extends State<FuelAmountField> {
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 16, 28, 16),
       child: TextFormField(
+        controller: widget.textEditingController,
         inputFormatters: [BlacklistingTextInputFormatter(new RegExp('[\\-|\\ ]'))], // Blocks everything expect numbers, dots and commas
         keyboardType: TextInputType.number,
         onFieldSubmitted: (v) {

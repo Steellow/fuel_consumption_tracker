@@ -10,3 +10,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - ability to change liters/gallons
 - ability to change miles/kimeters
 - submit button to FAB?
+- autohide keyboard on main screen
+- datetime field to add_log page
+- list reverse order
+- autopop new_log

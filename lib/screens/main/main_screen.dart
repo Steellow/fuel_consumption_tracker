@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
             SettingsButton(),
             Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Column(
                     children: [
