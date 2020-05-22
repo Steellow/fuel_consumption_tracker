@@ -16,3 +16,12 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - cancel button to new_log
 - auto odometer to fuel_fueld
 - titlebar bottom shadow
+- button to recalculate 'prefs' box
+- current odo to mainscreen
+- mainscreen calc doesn't refresh
+
+## stuff
+
+prefs hive box
+
+'minOdo', 'maxOdo' are smallest and biggest odos recorded

@@ -34,7 +34,10 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: FutureBuilder(
-        future: Hive.openBox('logs'),
+        future: Future.wait([
+          Hive.openBox('logs'),
+          Hive.openBox('prefs'),
+        ]),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
@@ -51,7 +54,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  void dispose() { 
+  void dispose() {
     Hive.close();
     super.dispose();
   }

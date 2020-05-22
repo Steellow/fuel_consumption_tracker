@@ -44,8 +44,11 @@ class _SubmitButtonState extends State<SubmitButton> {
                     snackPosition: SnackPosition.BOTTOM,
                   );
                 } else {
+                  // Make log object an dave it
                   final Log log = Log(DateTime.now(), fuelAmount, odometer);
                   saveLog(log);
+
+                  updatePrefs(odometer, fuelAmount);
                 }
               }
             },
@@ -63,5 +66,20 @@ class _SubmitButtonState extends State<SubmitButton> {
     final logBox = Hive.box('logs');
     logBox.add(log);
     print("saveLog succee?");
+  }
+
+  void updatePrefs(int odometer, double fuelAmount) {
+    // Prefs are used to quick-access some important stuff
+    final prefs = Hive.box('prefs');
+    if (odometer < (prefs.get('minOdo') ?? 1000000)) {
+      prefs.put('minOdo', odometer);
+    } else if (odometer > (prefs.get('maxOdo') ?? 0)) {
+      prefs.put('maxOdo', odometer);
+    }
+
+    double currentTotalFuel = prefs.get('totalFuel') ?? 0.0;
+    prefs.put('totalFuel', currentTotalFuel + fuelAmount);
+
+    print('updatePrefs called');
   }
 }

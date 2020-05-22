@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fuel_consumption_tracker/screens/main/widgets/new_log_button.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
 
+import 'widgets/consumption_text.dart';
+import 'widgets/new_log_button.dart';
 import 'widgets/settings_button.dart';
 import 'widgets/view_history_button.dart';
 
@@ -24,7 +25,7 @@ class MainScreen extends StatelessWidget {
                         "Average Consumption",
                         style: Styles.whiteBold.copyWith(fontSize: 14),
                       ),
-                      Text("4.6L/100km", style: Styles.whiteBold),
+                      ConsumptionText(),
                     ],
                   ),
                   Column(
