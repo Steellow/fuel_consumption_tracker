@@ -9,3 +9,4 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - change history view datetime format
 - ability to change liters/gallons
 - ability to change miles/kimeters
+- formfield validators
