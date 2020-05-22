@@ -77,8 +77,10 @@ class _SubmitButtonState extends State<SubmitButton> {
       prefs.put('maxOdo', odometer);
     }
 
-    double currentTotalFuel = prefs.get('totalFuel') ?? 0.0;
-    prefs.put('totalFuel', currentTotalFuel + fuelAmount);
+    double currentTotalFuel = prefs.get('totalFuel') ?? 0;
+    double lastFuel = prefs.get('lastFuel') ?? 0;
+    prefs.put('totalFuel', currentTotalFuel + lastFuel);
+    prefs.put('lastFuel', fuelAmount);
 
     print('updatePrefs called');
   }

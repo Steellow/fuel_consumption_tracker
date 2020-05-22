@@ -17,8 +17,8 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - auto odometer to fuel_fueld
 - titlebar bottom shadow
 - button to recalculate 'prefs' box
-- current odo to mainscreen
 - mainscreen calc doesn't refresh
+- reset button to settings
 
 ## stuff
 
