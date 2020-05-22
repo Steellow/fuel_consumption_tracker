@@ -15,3 +15,4 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - autopop new_log
 - cancel button to new_log
 - auto odometer to fuel_fueld
+- titlebar bottom shadow
