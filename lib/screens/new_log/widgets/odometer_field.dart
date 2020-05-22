@@ -16,7 +16,10 @@ class _OdometerFieldState extends State<OdometerField> {
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 16, 28, 28),
       child: TextFormField(
-        inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly],
+        inputFormatters: <TextInputFormatter>[
+          WhitelistingTextInputFormatter.digitsOnly,
+          LengthLimitingTextInputFormatter(6),
+        ],
         keyboardType: TextInputType.number,
         focusNode: widget.focus,
         decoration: InputDecoration(
