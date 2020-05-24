@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fuel_consumption_tracker/screens/settings/settings_screen.dart';
+import 'package:get/get.dart';
 
 class SettingsButton extends StatefulWidget {
   @override
@@ -16,7 +18,9 @@ class _SettingsButtonState extends State<SettingsButton> {
           Icons.settings,
           color: Colors.white,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Get.to(SettingsScreen());
+        },
       ),
     );
   }
