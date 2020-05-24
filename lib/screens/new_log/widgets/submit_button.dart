@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/models/log.dart';
+import 'package:fuel_consumption_tracker/screens/main/main_screen.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -30,6 +31,7 @@ class _SubmitButtonState extends State<SubmitButton> {
                 double fuelAmount = double.tryParse(widget.fuelFormController.text);
                 int odometer = int.tryParse(widget.odometerFormController.text);
 
+                // check that everything OK
                 if (fuelAmount == null) {
                   // That snackbar is ugly, but doesn't matter since this shouldn't be triggered in the first place
                   Get.snackbar(
@@ -44,11 +46,13 @@ class _SubmitButtonState extends State<SubmitButton> {
                     snackPosition: SnackPosition.BOTTOM,
                   );
                 } else {
-                  // Make log object an dave it
+                  // If values are OK save log object and update prefs
                   final Log log = Log(DateTime.now(), fuelAmount, odometer);
                   saveLog(log);
 
                   updatePrefs(odometer, fuelAmount);
+
+                  Get.offAll(MainScreen()); // Recreate mainscreen instead of going back, so it refreshes the data
                 }
               }
             },
