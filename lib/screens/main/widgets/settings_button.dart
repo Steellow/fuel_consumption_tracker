@@ -19,7 +19,7 @@ class _SettingsButtonState extends State<SettingsButton> {
           color: Colors.white,
         ),
         onPressed: () {
-          Get.to(SettingsScreen());
+          Get.to(SettingsScreen(), transition: Transition.cupertino);
         },
       ),
     );

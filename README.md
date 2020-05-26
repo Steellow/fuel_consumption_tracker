@@ -26,6 +26,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 ### HIFI
 
 - indigo to indigogradient?
+- history screen transition
 
 
 ## stuff
