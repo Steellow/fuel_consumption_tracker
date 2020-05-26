@@ -4,7 +4,6 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 
 ## Ideas
 
-- indigo to indigogradient?
 - ability to edit logs
 - change history view datetime format
 - ability to change liters/gallons
@@ -24,8 +23,13 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - settings icon colors
 - https://pub.dev/packages/rate_my_app
 
+### HIFI
+
+- indigo to indigogradient?
+
+
 ## stuff
 
 prefs hive box
 
-'minOdo', 'maxOdo' are smallest and biggest odos recorded
+    'minOdo', 'maxOdo' are smallest and biggest odos recorded

@@ -23,8 +23,8 @@ class _SubmitButtonState extends State<SubmitButton> {
       child: Center(
         child: Container(
           width: MediaQuery.of(context).size.width / 2,
-          child: RaisedButton(
-            color: Colors.indigo,
+          child: FloatingActionButton(
+            backgroundColor: Colors.indigo,
             shape: Styles.roundShape,
             onPressed: () {
               if (widget.formkey.currentState.validate()) {
@@ -57,7 +57,7 @@ class _SubmitButtonState extends State<SubmitButton> {
               }
             },
             child: Container(
-              margin: EdgeInsets.all(12),
+              // margin: EdgeInsets.all(12),
               child: Text('Submit', style: Styles.whiteBold.copyWith(fontSize: 24)),
             ),
           ),

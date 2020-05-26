@@ -13,16 +13,13 @@ class _NewLogButtonState extends State<NewLogButton> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width / 2,
-      child: RaisedButton(
+      child: FloatingActionButton(
+        backgroundColor: Colors.white,
         shape: Styles.roundShape,
-        color: Colors.white,
         onPressed: () {
           Get.to(NewLogScreen());
         },
-        child: Container(
-          margin: EdgeInsets.all(12),
-          child: Text('New Log', style: Styles.whiteBold.copyWith(color: Colors.indigo)),
-        ),
+        child: Text('New Log', style: Styles.whiteBold.copyWith(color: Colors.indigo)),
       ),
     );
   }
