@@ -52,6 +52,6 @@ class TripComputer {
     print("maxOdo: " + maxOdo.toString());
     print("totalConsumption: " + totalConsumption.toString());
 
-    Fluttertoast.showToast(msg: "Success");
+    Fluttertoast.showToast(msg: "Success"); // Using 3rd party library because otherwise you would need context
   }
 }

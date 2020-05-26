@@ -21,6 +21,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - https://pub.dev/packages/rate_my_app
 - message on main page if not enough logs
 - settings tile total fuel box watcher
+- text field indigo color on dark mode
 
 ### HIFI
 
