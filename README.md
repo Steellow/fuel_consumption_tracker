@@ -22,6 +22,8 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - message on main page if not enough logs
 - settings tile total fuel box watcher
 - text field indigo color on dark mode
+- tries to calculate consumption before you have 2 logs?
+- if min and max odo are the same, answer is InfinityL
 
 ### HIFI
 

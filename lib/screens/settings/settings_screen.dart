@@ -20,7 +20,7 @@ class SettingsScreen extends StatelessWidget {
         children: [
           SettingsSubtitle("Stats"),
           TotalFuelTile(), 
-          RecalculateTile(), // wip
+          RecalculateTile(),
           Divider(),
           SettingsSubtitle("General settings"),
           ThemeTile(), // wip
@@ -28,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
           DateFormatTile(), // wip
           Divider(), // wip
           SettingsSubtitle("About"),
-          RateAppTile(), // wip
+          RateAppTile(), // Add when app is on gPlay
           SourceCodeTile(), // wip
           ResetEverythingTile(), // wip
         ],
