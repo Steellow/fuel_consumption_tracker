@@ -19,6 +19,10 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - button to recalculate 'prefs' box
 - reset button to settings
 - history listview starts from bottom
+- listtile center icons
+- settings subtitle widget
+- settings icon colors
+- https://pub.dev/packages/rate_my_app
 
 ## stuff
 
