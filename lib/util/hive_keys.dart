@@ -1,4 +1,4 @@
-const String PREFS_BOX = 'prefs';
+const String PREFS_BOX = 'prefs'; // prefs box is quick access to important data, such as total consumption. Misleading name but no point in changing anymore
 const String LOGS_BOX = 'logs';
 
 const String TOTAL_FUEL = 'totalFuel';
