@@ -1,3 +1,4 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:hive/hive.dart';
 
@@ -50,5 +51,7 @@ class TripComputer {
     print("minOdo: " + minOdo.toString());
     print("maxOdo: " + maxOdo.toString());
     print("totalConsumption: " + totalConsumption.toString());
+
+    Fluttertoast.showToast(msg: "Success");
   }
 }
