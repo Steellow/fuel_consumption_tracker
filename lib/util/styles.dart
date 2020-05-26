@@ -7,6 +7,12 @@ abstract class Styles {
     fontSize: 30,
   );
 
+  static const TextStyle settingsSubtitle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 2,
+  );
+
   static ShapeBorder roundShape = RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(300.0),
   );
