@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/models/log.dart';
-import 'package:fuel_consumption_tracker/screens/main/main_screen.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
