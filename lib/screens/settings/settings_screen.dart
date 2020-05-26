@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/settings/widgets/settings_subtitle.dart';
 
-import 'widgets/rate_app_tile.dart';
-import 'widgets/recalculate_tile.dart';
-import 'widgets/reset_everything_tile.dart';
-import 'widgets/source_code_tile.dart';
-import 'widgets/theme_tile.dart';
-import 'widgets/total_fuel_tile.dart';
-import 'widgets/units_tile.dart';
+import 'widgets/tiles/date_format_tile.dart';
+import 'widgets/tiles/rate_app_tile.dart';
+import 'widgets/tiles/recalculate_tile.dart';
+import 'widgets/tiles/reset_everything_tile.dart';
+import 'widgets/tiles/source_code_tile.dart';
+import 'widgets/tiles/theme_tile.dart';
+import 'widgets/tiles/total_fuel_tile.dart';
+import 'widgets/tiles/units_tile.dart';
+
+
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -22,6 +25,7 @@ class SettingsScreen extends StatelessWidget {
           SettingsSubtitle("General settings"),
           ThemeTile(), // wip
           UnitsTile(), // wip
+          DateFormatTile(), // wip
           Divider(), // wip
           SettingsSubtitle("About"),
           RateAppTile(), // wip

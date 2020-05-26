@@ -52,7 +52,7 @@ class _SubmitButtonState extends State<SubmitButton> {
 
                   updatePrefs(odometer, fuelAmount);
 
-                  Get.offAll(MainScreen()); // Recreate mainscreen instead of going back, so it refreshes the data
+                  Get.back();
                 }
               }
             },
