@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/models/log.dart';
+import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -66,24 +67,24 @@ class _SubmitButtonState extends State<SubmitButton> {
   }
 
   void saveLog(Log log) {
-    final logBox = Hive.box('logs');
+    final logBox = Hive.box(LOGS_BOX);
     logBox.add(log);
     print("saveLog succee?");
   }
 
   void updatePrefs(int odometer, double fuelAmount) {
     // Prefs are used to quick-access some important stuff
-    final prefs = Hive.box('prefs');
-    if (odometer < (prefs.get('minOdo') ?? 1000000)) {
-      prefs.put('minOdo', odometer);
-    } else if (odometer > (prefs.get('maxOdo') ?? 0)) {
-      prefs.put('maxOdo', odometer);
+    final prefs = Hive.box(PREFS_BOX);
+    if (odometer < (prefs.get(MIN_ODO) ?? 1000000)) {
+      prefs.put(MIN_ODO, odometer);
+    } else if (odometer > (prefs.get(MAX_ODO) ?? 0)) {
+      prefs.put(MAX_ODO, odometer);
     }
 
-    double currentTotalFuel = prefs.get('totalFuel') ?? 0;
-    double lastFuel = prefs.get('lastFuel') ?? 0;
-    prefs.put('totalFuel', currentTotalFuel + lastFuel);
-    prefs.put('lastFuel', fuelAmount);
+    double currentTotalFuel = prefs.get(TOTAL_FUEL) ?? 0;
+    double lastFuel = prefs.get(LAST_FUEL) ?? 0;
+    prefs.put(TOTAL_FUEL, currentTotalFuel + lastFuel);
+    prefs.put(LAST_FUEL, fuelAmount);
 
     print('updatePrefs called');
   }

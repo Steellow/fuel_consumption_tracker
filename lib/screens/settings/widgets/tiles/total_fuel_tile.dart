@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/shared_widgets/center_icon.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class TotalFuelTile extends StatefulWidget {
@@ -14,7 +15,7 @@ class _TotalFuelTileState extends State<TotalFuelTile> {
 
   double _getTotalFuel() {
     if (prefsBox.get(TOTAL_FUEL) != null) {
-      return prefsBox.get(TOTAL_FUEL);
+      return prefsBox.get(TOTAL_FUEL) + prefsBox.get(LAST_FUEL);
     }
     return 0;
   }
@@ -22,12 +23,20 @@ class _TotalFuelTileState extends State<TotalFuelTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {}, // Empty listtile for InkWell effect
+      onTap: () {
+        // tap for debug
+        print(prefsBox.get(TOTAL_FUEL) + prefsBox.get(LAST_FUEL));
+      },
       leading: CenterIcon(
         Icon(MdiIcons.fuel),
       ),
       title: Text("Total fuel"),
-      subtitle: Text(_getTotalFuel().toStringAsFixed(2) + "L"),
+      subtitle: ValueListenableBuilder(
+        valueListenable: prefsBox.listenable(),
+        builder: (BuildContext context, dynamic value, Widget child) {
+          return Text(_getTotalFuel().toStringAsFixed(2) + "L");
+        },
+      ),
     );
   }
 }
