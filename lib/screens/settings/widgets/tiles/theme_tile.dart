@@ -15,10 +15,11 @@ class _ThemeTileState extends State<ThemeTile> {
   final Box settings = Hive.box(SETTINGS_BOX);
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     _currentVal = settings.get(DARK_ENABLED) ?? false;
   }
+
   @override
   Widget build(BuildContext context) {
     return SwitchListTile(
@@ -26,15 +27,21 @@ class _ThemeTileState extends State<ThemeTile> {
       onChanged: (value) {
         setState(() {
           _currentVal = value; // updates the tile
+          if (value) {
+            // changes theme
+            ThemeProvider.controllerOf(context).setTheme('customdark');
+          } else {
+            ThemeProvider.controllerOf(context).setTheme('customlight');
+          }
         });
         settings.put(DARK_ENABLED, value); // saves setting to hive (used in this tiles initstate)
-        ThemeProvider.controllerOf(context).nextTheme(); // changes theme
       },
       title: Text("Dark mode"),
       subtitle: Text("Dark mode is disabled"),
       secondary: CenterIcon(
         Icon(MdiIcons.brightness6),
       ),
+      activeColor: Colors.indigoAccent,
     );
   }
 }

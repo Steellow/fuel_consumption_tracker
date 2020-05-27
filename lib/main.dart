@@ -29,15 +29,28 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ThemeProvider(
+      themes: [
+        AppTheme.light().copyWith(
+          id: 'customlight',
+          data: ThemeData(
+            primaryColor: Colors.indigo,
+            accentColor: Colors.indigo,
+          ),
+        ),
+        AppTheme.dark().copyWith(
+          id: 'customdark',
+          data: ThemeData(
+            brightness: Brightness.dark,
+            primaryColor: Colors.indigoAccent,
+            accentColor: Colors.indigoAccent,
+          ),
+        ),
+      ],
       saveThemesOnChange: true,
       loadThemeOnInit: true,
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Fuel Consumption Tracker',
-        theme: ThemeData(
-          primarySwatch: Colors.indigo,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
         home: FutureBuilder(
           future: Future.wait([
             Hive.openBox(LOGS_BOX),

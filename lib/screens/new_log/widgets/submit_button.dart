@@ -24,7 +24,7 @@ class _SubmitButtonState extends State<SubmitButton> {
         child: Container(
           width: MediaQuery.of(context).size.width / 2,
           child: FloatingActionButton(
-            backgroundColor: Colors.indigo,
+            // backgroundColor: Colors.indigo,
             shape: Styles.roundShape,
             onPressed: () {
               if (widget.formkey.currentState.validate()) {
