@@ -12,11 +12,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - cancel button to new_log
 - auto odometer to fuel_fueld
 - titlebar bottom shadow
-- history listview starts from bottom
 - https://pub.dev/packages/rate_my_app
-- message on main page if not enough logs
-- tries to calculate consumption before you have 2 logs?
-- if min and max odo are the same, answer is InfinityL
 - finnish translation
 
 ### TEST
