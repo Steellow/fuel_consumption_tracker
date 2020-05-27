@@ -28,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
           DateFormatTile(), // wip
           Divider(), // wip
           SettingsSubtitle("About"),
-          RateAppTile(), // Add when app is on gPlay
+          // RateAppTile(), // Add when app is on gPlay
           SourceCodeTile(), // wip
           ResetEverythingTile(), // wip
         ],
