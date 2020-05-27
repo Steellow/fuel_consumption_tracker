@@ -7,8 +7,8 @@ class UnitsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CenterIcon(Icon(MdiIcons.ruler)),
-      title: Text("Unit"),
-      subtitle: Text("Currently using kilometers/liters"),
+      title: Text("Units"),
+      subtitle: Text("Coming soon"),
     );
   }
 }

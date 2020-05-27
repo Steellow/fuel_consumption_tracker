@@ -12,6 +12,7 @@ class RateAppTile extends StatelessWidget {
       },
       leading: CenterIcon(Icon(Icons.star)),
       title: Text("Rate app"),
+      subtitle: Text("Coming soon"),
     );
   }
 }

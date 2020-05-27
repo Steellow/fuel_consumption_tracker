@@ -27,30 +27,36 @@ class TripComputer {
 
     var logsList = logsBox.values;
 
-    double totalConsumption = 0;
+    double totalFuel = 0; // totalFuel does NOT include lastFuel
+    double lastFuel = 0;
+
     int minOdo = 0;
     int maxOdo = 0;
 
     // Goes through every log, calculates total consumption and finds log with smallest and biggest odometer
     logsList.forEach((log) {
       // adds each logs consumption to totalconsumption
-      totalConsumption = totalConsumption + log.amount;
+      totalFuel = totalFuel + log.amount;
 
       // checks every logs odometer if its smaller than the smallest or bigger than the biggest
       if (log.odometer < minOdo || minOdo == 0) {
         minOdo = log.odometer;
       } else if (log.odometer > maxOdo) {
         maxOdo = log.odometer;
+        lastFuel = log.amount;
       }
     });
 
+    totalFuel = totalFuel - lastFuel;
+
     prefs.put(MIN_ODO, minOdo);
     prefs.put(MAX_ODO, maxOdo);
-    prefs.put(TOTAL_FUEL, totalConsumption);
+    prefs.put(TOTAL_FUEL, totalFuel);
+    prefs.put(LAST_FUEL, lastFuel);
 
     print("minOdo: " + minOdo.toString());
     print("maxOdo: " + maxOdo.toString());
-    print("totalConsumption: " + totalConsumption.toString());
+    print("totalConsumption: " + totalFuel.toString());
 
     Fluttertoast.showToast(msg: "Success"); // Using 3rd party library because otherwise you would need context
   }

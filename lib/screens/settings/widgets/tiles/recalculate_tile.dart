@@ -17,8 +17,8 @@ class _RecalculateTileState extends State<RecalculateTile> {
       leading: CenterIcon(
         Icon(Icons.refresh),
       ),
-      title: Text("Refresh stats"),
-      subtitle: Text("Recalculate total fuel & average consumption"),
+      title: Text("Recalculate everything"),
+      subtitle: Text("In case something is wrong"),
     );
   }
 }

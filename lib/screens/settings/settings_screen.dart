@@ -23,12 +23,12 @@ class SettingsScreen extends StatelessWidget {
           RecalculateTile(),
           Divider(),
           SettingsSubtitle("General settings"),
-          ThemeTile(), // wip
-          UnitsTile(), // wip
-          DateFormatTile(), // needs functionality
-          Divider(), // wip
+          ThemeTile(), 
+          UnitsTile(), // Coming Soon
+          DateFormatTile(),
+          Divider(),
           SettingsSubtitle("About"),
-          // RateAppTile(), // Add when app is on gPlay
+          RateAppTile(), // Add when app is on gPlay
           SourceCodeTile(),
           ResetEverythingTile(),
         ],
