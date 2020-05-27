@@ -12,10 +12,19 @@ class ConsumptionText extends StatelessWidget {
       valueListenable: Hive.box(PREFS_BOX).listenable(), // rebuilds widget when something changes inside PREFS_BOX
       builder: (BuildContext context, dynamic value, Widget child) {
         return Text(
-          TripComputer.calculateConsumption().toStringAsFixed(2) + "L/100km",
+          _getConsumptionString(),
           style: Styles.whiteBold,
         );
       },
     );
+  }
+
+  String _getConsumptionString() {
+    double _consumption = TripComputer.calculateConsumption();
+
+    if (_consumption == double.infinity || _consumption == 0) {
+      return "Not enough logs";
+    }
+    return _consumption.toStringAsFixed(2) + "L/100km";
   }
 }

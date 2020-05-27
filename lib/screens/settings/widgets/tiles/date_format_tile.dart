@@ -64,7 +64,7 @@ class _DateFormatTileState extends State<DateFormatTile> {
                   title: Text(
                     formattedDate,
                     style: TextStyle(
-                      color: ThemeTools().getTextColor(), // Gets right text color for the theme
+                      color: ThemeTools.getTextColor(), // Gets right text color for the theme
                     ),
                   ),
                   onTap: () {

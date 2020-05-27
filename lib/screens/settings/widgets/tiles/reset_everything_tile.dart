@@ -17,7 +17,7 @@ class ResetEverythingTile extends StatelessWidget {
             title: Text(
               "Are you sure you want to delete everything?",
               style: TextStyle(
-                color: ThemeTools().getTextColor(),
+                color: ThemeTools.getTextColor(),
               ),
             ),
             actions: [
