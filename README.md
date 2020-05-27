@@ -9,7 +9,6 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - ability to change miles/kimeters
 - autohide keyboard on main screen
 - datetime field to add_log page
-- cancel button to new_log
 - auto odometer to fuel_fueld
 - titlebar bottom shadow
 - https://pub.dev/packages/rate_my_app
