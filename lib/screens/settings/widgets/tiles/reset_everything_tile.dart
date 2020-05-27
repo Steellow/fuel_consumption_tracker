@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/shared_widgets/center_icon.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
+import 'package:fuel_consumption_tracker/util/theme_tools.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -12,7 +13,13 @@ class ResetEverythingTile extends StatelessWidget {
       onTap: () {
         Get.dialog(
           AlertDialog(
-            title: Text("Are you sure you want to delete everything?"),
+            backgroundColor: Theme.of(context).dialogBackgroundColor,
+            title: Text(
+              "Are you sure you want to delete everything?",
+              style: TextStyle(
+                color: ThemeTools().getTextColor(),
+              ),
+            ),
             actions: [
               FlatButton(
                 child: Text("Cancel"),

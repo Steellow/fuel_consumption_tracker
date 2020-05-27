@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/shared_widgets/center_icon.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
+import 'package:fuel_consumption_tracker/util/theme_tools.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -63,7 +64,7 @@ class _DateFormatTileState extends State<DateFormatTile> {
                   title: Text(
                     formattedDate,
                     style: TextStyle(
-                      color: _getTextColor(), // Gets right text color for the theme
+                      color: ThemeTools().getTextColor(), // Gets right text color for the theme
                     ),
                   ),
                   onTap: () {
@@ -80,9 +81,3 @@ class _DateFormatTileState extends State<DateFormatTile> {
   }
 }
 
-Color _getTextColor() {
-  bool _darkEnabled = Hive.box(SETTINGS_BOX).get(DARK_ENABLED) ?? false;
-
-  if (_darkEnabled) return Colors.white;
-  return Colors.black;
-}
