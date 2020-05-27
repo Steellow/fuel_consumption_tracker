@@ -25,7 +25,7 @@ class SettingsScreen extends StatelessWidget {
           SettingsSubtitle("General settings"),
           ThemeTile(), // wip
           UnitsTile(), // wip
-          DateFormatTile(), // wip
+          DateFormatTile(), // needs functionality
           Divider(), // wip
           SettingsSubtitle("About"),
           // RateAppTile(), // Add when app is on gPlay

@@ -40,6 +40,7 @@ class _MyAppState extends State<MyApp> {
         AppTheme.dark().copyWith(
           id: 'customdark',
           data: ThemeData(
+            dialogBackgroundColor: Colors.grey[800],
             brightness: Brightness.dark,
             primaryColor: Colors.indigoAccent,
             accentColor: Colors.indigoAccent,
