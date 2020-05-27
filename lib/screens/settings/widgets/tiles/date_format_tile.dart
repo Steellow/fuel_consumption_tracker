@@ -3,6 +3,7 @@ import 'package:fuel_consumption_tracker/screens/shared_widgets/center_icon.dart
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -12,6 +13,8 @@ class DateFormatTile extends StatefulWidget {
 }
 
 class _DateFormatTileState extends State<DateFormatTile> {
+  final Box settings = Hive.box(SETTINGS_BOX);
+
   final List<String> dateFormatList = [
     'yyyy-MM-dd',
     'yyyy/MM/dd',
@@ -36,7 +39,13 @@ class _DateFormatTileState extends State<DateFormatTile> {
     return ListTile(
       leading: CenterIcon(Icon(MdiIcons.calendarHeart)),
       title: Text("Date format"),
-      subtitle: Text("25.09.2000"),
+      subtitle: ValueListenableBuilder(
+        valueListenable: settings.listenable(keys: [DATE_FORMAT]), // Preview text in the tile, listens to changes in that particular settings
+        builder: (BuildContext context, dynamic value, Widget child) {
+          String dateFormat = settings.get(DATE_FORMAT) ?? "dd.MM.yyyy";
+          return Text(DateFormat(dateFormat).format(now));
+        },
+      ),
       onTap: () {
         Get.dialog(
           AlertDialog(
@@ -57,7 +66,10 @@ class _DateFormatTileState extends State<DateFormatTile> {
                       color: _getTextColor(), // Gets right text color for the theme
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    settings.put(DATE_FORMAT, dateFormatList[index]);
+                    Get.back();
+                  },
                 );
               }),
             ),

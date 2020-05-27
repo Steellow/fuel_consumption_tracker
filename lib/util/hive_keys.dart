@@ -8,3 +8,4 @@ const String MIN_ODO = 'minOdo';
 const String MAX_ODO = 'maxOdo';
 
 const String DARK_ENABLED = 'darkEnabled';
+const String DATE_FORMAT = 'dateFormat';

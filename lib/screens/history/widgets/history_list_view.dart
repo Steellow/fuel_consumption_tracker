@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/models/log.dart';
+import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 
@@ -9,12 +10,15 @@ class HistoryListView extends StatefulWidget {
 }
 
 class _HistoryListViewState extends State<HistoryListView> {
-  Box logBox;
+  final Box logBox = Hive.box(LOGS_BOX);
+  final Box settings = Hive.box(SETTINGS_BOX);
+
+  String _dateFormat;
 
   @override
   void initState() {
     super.initState();
-    logBox = Hive.box('logs');
+    _dateFormat = settings.get(DATE_FORMAT) ?? "dd.MM.yyyy";
   }
 
   @override
@@ -39,7 +43,8 @@ class _HistoryListViewState extends State<HistoryListView> {
   }
 
   Widget _buildItem(Log log) {
-    String formattedDate = DateFormat('dd.MM.yyyy').format(log.date);
+
+    String formattedDate = DateFormat(_dateFormat).format(log.date);
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12),
