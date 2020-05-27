@@ -10,10 +10,27 @@ class ResetEverythingTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Hive.box(LOGS_BOX).clear();
-        Hive.box(PREFS_BOX).clear();
-        Get.restartApp();
-        print("ASDF");
+        Get.dialog(
+          AlertDialog(
+            title: Text("Are you sure you want to delete everything?"),
+            actions: [
+              FlatButton(
+                child: Text("Cancel"),
+                onPressed: () {
+                  Get.back();
+                },
+              ),
+              FlatButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Hive.box(LOGS_BOX).clear();
+                  Hive.box(PREFS_BOX).clear();
+                  Get.back();
+                },
+              ),
+            ],
+          ),
+        );
       },
       leading: CenterIcon(Icon(MdiIcons.deleteForever)),
       title: Text("Reset everything"),

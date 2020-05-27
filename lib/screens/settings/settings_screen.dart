@@ -30,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
           SettingsSubtitle("About"),
           // RateAppTile(), // Add when app is on gPlay
           SourceCodeTile(),
-          ResetEverythingTile(), // wip
+          ResetEverythingTile(),
         ],
       ),
     );

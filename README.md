@@ -24,6 +24,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - text field indigo color on dark mode
 - tries to calculate consumption before you have 2 logs?
 - if min and max odo are the same, answer is InfinityL
+- finnish translation
 
 ### TEST
 
