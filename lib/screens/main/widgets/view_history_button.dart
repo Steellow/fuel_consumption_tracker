@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/history/history_screen.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
 import 'package:get/get.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class ViewHistoryButton extends StatefulWidget {
   @override
@@ -16,7 +17,9 @@ class _ViewHistoryButtonState extends State<ViewHistoryButton> {
       child: FlatButton(
         shape: Styles.roundShape,
         onPressed: () {
-          Get.to(HistoryScreen());
+          Get.to(
+            ThemeConsumer(child: HistoryScreen()),
+          );
         },
         child: Container(
           margin: EdgeInsets.all(12),
