@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/main/main_screen.dart';
+import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:theme_provider/theme_provider.dart';
 
 import 'models/log.dart';
 
@@ -26,29 +28,34 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Fuel Consumption Tracker',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: FutureBuilder(
-        future: Future.wait([
-          Hive.openBox('logs'),
-          Hive.openBox('prefs'),
-        ]),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasError) {
-              return Text(snapshot.error.toString());
+    return ThemeProvider(
+      saveThemesOnChange: true,
+      loadThemeOnInit: true,
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Fuel Consumption Tracker',
+        theme: ThemeData(
+          primarySwatch: Colors.indigo,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: FutureBuilder(
+          future: Future.wait([
+            Hive.openBox(LOGS_BOX),
+            Hive.openBox(PREFS_BOX),
+            Hive.openBox(SETTINGS_BOX),
+          ]),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              } else {
+                return MainScreen();
+              }
             } else {
-              return MainScreen();
+              return Scaffold();
             }
-          } else {
-            return Scaffold();
-          }
-        },
+          },
+        ),
       ),
     );
   }

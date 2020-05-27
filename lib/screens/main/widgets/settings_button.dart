@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/settings/settings_screen.dart';
 import 'package:get/get.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class SettingsButton extends StatefulWidget {
   @override
@@ -19,7 +20,12 @@ class _SettingsButtonState extends State<SettingsButton> {
           color: Colors.white,
         ),
         onPressed: () {
-          Get.to(SettingsScreen(), transition: Transition.cupertino);
+          Get.to(
+            ThemeConsumer(
+              child: SettingsScreen(),
+            ),
+            transition: Transition.cupertino,
+          );
         },
       ),
     );
