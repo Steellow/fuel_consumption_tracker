@@ -37,11 +37,18 @@ class _ThemeTileState extends State<ThemeTile> {
         settings.put(DARK_ENABLED, value); // saves setting to hive (used in this tiles initstate)
       },
       title: Text("Dark mode"),
-      subtitle: Text("Dark mode is disabled"),
+      subtitle: Text(_getSubtitle()),
       secondary: CenterIcon(
         Icon(MdiIcons.brightness6),
       ),
       activeColor: Colors.indigoAccent,
     );
+  }
+
+  String _getSubtitle() {
+    if(_currentVal) {
+      return "Dark mode is enabled";
+    }
+    return "Dark mode is disabled";
   }
 }
