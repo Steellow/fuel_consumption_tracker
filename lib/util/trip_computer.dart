@@ -4,17 +4,45 @@ import 'package:hive/hive.dart';
 
 class TripComputer {
   static double calculateConsumption() {
+    final settings = Hive.box(SETTINGS_BOX);
+
+    if (settings.get(IMPERIAL_ENABLED)) {
+      return _calculateImperialConsumption();
+    } else {
+      return _calculateMetricConsumption();
+    }
+  }
+
+  static double _calculateMetricConsumption() {
     final prefs = Hive.box(PREFS_BOX);
 
     int minOdo = prefs.get('minOdo') ?? 0;
     int maxOdo = prefs.get('maxOdo') ?? 0;
-
     int totalOdo = maxOdo - minOdo;
+
     double totalFuel = prefs.get('totalFuel') ?? 0.0;
 
     double averageConsumption = totalFuel / (totalOdo / 100);
 
     if (averageConsumption.isNaN) {
+      return 0;
+    } else {
+      return averageConsumption;
+    }
+  }
+
+  static double _calculateImperialConsumption() {
+    final prefs = Hive.box(PREFS_BOX);
+
+    int minOdo = prefs.get('minOdo') ?? 0;
+    int maxOdo = prefs.get('maxOdo') ?? 0;
+    int totalOdo = maxOdo - minOdo;
+
+    double totalFuel = prefs.get('totalFuel') ?? 0.0;
+
+    double averageConsumption = totalOdo / totalFuel;
+
+    if (averageConsumption.isNaN || averageConsumption == double.infinity) {
       return 0;
     } else {
       return averageConsumption;

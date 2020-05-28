@@ -13,6 +13,9 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - titlebar bottom shadow
 - https://pub.dev/packages/rate_my_app
 - finnish translation
+- test if mpg actually works
+- total fuel tile update units
+- listview update units
 
 ### TEST
 
@@ -31,3 +34,9 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 prefs hive box
 
     'minOdo', 'maxOdo' are smallest and biggest odos recorded
+
+
+## things I've learned
+
+- Using valuableListenableBuilder for everything is a mess (if the app grows), easier to just implement proper state management
+- Hive is way easier and better than shared_preferences
