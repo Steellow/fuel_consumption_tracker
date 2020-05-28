@@ -2,11 +2,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:hive/hive.dart';
 
-class TripComputer {
+abstract class TripComputer {
   static double calculateConsumption() {
-    final settings = Hive.box(SETTINGS_BOX);
+    final Box prefs = Hive.box(PREFS_BOX);
 
-    if (settings.get(IMPERIAL_ENABLED)) {
+    if (prefs.get(IMPERIAL_ENABLED) ?? false) {
       return _calculateImperialConsumption();
     } else {
       return _calculateMetricConsumption();
@@ -87,5 +87,23 @@ class TripComputer {
     print("totalConsumption: " + totalFuel.toString());
 
     Fluttertoast.showToast(msg: "Success"); // Using 3rd party library because otherwise you would need context
+  }
+
+  static String getFuelUnit() {
+    final Box prefs = Hive.box(PREFS_BOX);
+
+    if (prefs.get(IMPERIAL_ENABLED) ?? false) {
+      return " gals";
+    }
+    return " L";
+  }
+
+  static String getLengthUnit() {
+    final Box prefs = Hive.box(PREFS_BOX);
+
+    if (prefs.get(IMPERIAL_ENABLED) ?? false) {
+      return " miles";
+    }
+    return " km";
   }
 }

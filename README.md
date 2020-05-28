@@ -40,3 +40,6 @@ prefs hive box
 
 - Using valuableListenableBuilder for everything is a mess (if the app grows), easier to just implement proper state management
 - Hive is way easier and better than shared_preferences
+- Always make helper class for shared_prefs etc. which automatically returns default values
+- abstract class = can't make instance of that class
+    - static method = called directly from class, not instace

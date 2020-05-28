@@ -6,22 +6,17 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class ConsumptionText extends StatelessWidget {
-  final Box settings = Hive.box(SETTINGS_BOX);
+  final Box prefs = Hive.box(PREFS_BOX);
 
   @override
   Widget build(BuildContext context) {
     // nested valueListenableBuilders because it doesn't allow to listen to multiple valuables
     return ValueListenableBuilder(
-      valueListenable: settings.listenable(),
+      valueListenable: prefs.listenable(), // rebuilds widget when something changes inside PREFS_BOX
       builder: (BuildContext context, dynamic value, Widget child) {
-        return ValueListenableBuilder(
-          valueListenable: Hive.box(PREFS_BOX).listenable(), // rebuilds widget when something changes inside PREFS_BOX
-          builder: (BuildContext context, dynamic value, Widget child) {
-            return Text(
-              _getConsumptionString(),
-              style: Styles.whiteBold,
-            );
-          },
+        return Text(
+          _getConsumptionString(),
+          style: Styles.whiteBold,
         );
       },
     );
@@ -35,7 +30,7 @@ class ConsumptionText extends StatelessWidget {
     }
 
     String units;
-    if(settings.get(IMPERIAL_ENABLED)) {
+    if (prefs.get(IMPERIAL_ENABLED) ?? false) {
       units = "mpg";
     } else {
       units = "L/100km";

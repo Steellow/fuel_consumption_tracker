@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/shared_widgets/center_icon.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
+import 'package:fuel_consumption_tracker/util/trip_computer.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -34,7 +35,7 @@ class _TotalFuelTileState extends State<TotalFuelTile> {
       subtitle: ValueListenableBuilder(
         valueListenable: prefsBox.listenable(),
         builder: (BuildContext context, dynamic value, Widget child) {
-          return Text(_getTotalFuel().toStringAsFixed(2) + "L");
+          return Text(_getTotalFuel().toStringAsFixed(2) + TripComputer.getFuelUnit());
         },
       ),
     );

@@ -11,12 +11,12 @@ class UnitsTile extends StatefulWidget {
 
 class _UnitsTileState extends State<UnitsTile> {
   bool _currentVal;
-  final Box settings = Hive.box(SETTINGS_BOX);
+  final Box prefs = Hive.box(PREFS_BOX);
 
   @override
   void initState() {
     super.initState();
-    _currentVal = settings.get(IMPERIAL_ENABLED) ?? false;
+    _currentVal = prefs.get(IMPERIAL_ENABLED) ?? false;
   }
 
   @override
@@ -26,7 +26,7 @@ class _UnitsTileState extends State<UnitsTile> {
       onChanged: (value) {
         setState(() {
           _currentVal = value; // updates the tile
-          settings.put(IMPERIAL_ENABLED, value);
+          prefs.put(IMPERIAL_ENABLED, value);
         });
       },
       secondary: CenterIcon(Icon(MdiIcons.ruler)),

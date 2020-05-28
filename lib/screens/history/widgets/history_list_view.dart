@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/models/log.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
+import 'package:fuel_consumption_tracker/util/trip_computer.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 
@@ -45,8 +46,8 @@ class _HistoryListViewState extends State<HistoryListView> {
       child: Card(
         elevation: 4,
         child: ListTile(
-          title: Text(log.amount.toString() + "L"),
-          subtitle: Text(log.odometer.toString() + "km"),
+          title: Text(log.amount.toString() + TripComputer.getFuelUnit()),
+          subtitle: Text(log.odometer.toString() + TripComputer.getLengthUnit()),
           trailing: Text(formattedDate),
         ),
       ),
