@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/models/log.dart';
+import 'package:fuel_consumption_tracker/state/picked_date_state.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 
 class SubmitButton extends StatefulWidget {
   final GlobalKey<FormState> formkey;
@@ -19,6 +21,8 @@ class SubmitButton extends StatefulWidget {
 class _SubmitButtonState extends State<SubmitButton> {
   @override
   Widget build(BuildContext context) {
+    final PickedDateState pickedDateState = Provider.of<PickedDateState>(context, listen: false);
+
     return Expanded(
       child: Center(
         child: Container(
@@ -47,7 +51,11 @@ class _SubmitButtonState extends State<SubmitButton> {
                   );
                 } else {
                   // If values are OK save log object and update prefs
-                  final Log log = Log(DateTime.now(), fuelAmount, odometer);
+                  final Log log = Log(
+                    pickedDateState.dt, // gets picked dt (default dt.now) from provider
+                    fuelAmount,
+                    odometer,
+                  );
                   saveLog(log);
 
                   updatePrefs(odometer, fuelAmount);
@@ -69,11 +77,11 @@ class _SubmitButtonState extends State<SubmitButton> {
   void saveLog(Log log) {
     final logBox = Hive.box(LOGS_BOX);
     logBox.add(log);
-    print("saveLog succee?");
   }
 
   void updatePrefs(int odometer, double fuelAmount) {
     // Prefs are used to quick-access some important stuff
+    // Checks if the new log is smallest or biggest known log, and if so, saves it to prefs
     final prefs = Hive.box(PREFS_BOX);
     if (odometer < (prefs.get(MIN_ODO) ?? 1000000)) {
       prefs.put(MIN_ODO, odometer);
@@ -81,6 +89,7 @@ class _SubmitButtonState extends State<SubmitButton> {
       prefs.put(MAX_ODO, odometer);
     }
 
+    // saves the amount you tanked as lastFuel, and recalculates currentTotalFuel (which does not include lastFuel)
     double currentTotalFuel = prefs.get(TOTAL_FUEL) ?? 0;
     double lastFuel = prefs.get(LAST_FUEL) ?? 0;
     prefs.put(TOTAL_FUEL, currentTotalFuel + lastFuel);

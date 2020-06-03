@@ -16,6 +16,8 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - test if mpg actually works
 - total fuel tile update units
 - listview update units
+- dateformfield tect edit cursor on top of date pick field?
+- prettify code
 
 ### TEST
 
@@ -32,8 +34,8 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 ## stuff
 
 prefs hive box
-
     'minOdo', 'maxOdo' are smallest and biggest odos recorded
+    'imperialEnabled' is in prefs instead of settings, because it's more relevant there
 
 
 ## things I've learned

@@ -16,7 +16,7 @@ class _OdometerFieldState extends State<OdometerField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(16, 16, 28, 28),
+      padding: EdgeInsets.fromLTRB(16, 0, 28, 16),
       child: TextFormField(
         controller: widget.textEditingController,
         inputFormatters: <TextInputFormatter>[
