@@ -13,14 +13,14 @@ class DatePickerField extends StatefulWidget {
 
 class _DatePickerFieldState extends State<DatePickerField> {
   final DateFormat dateFormat = DateFormat(Hive.box(SETTINGS_BOX).get(DATE_FORMAT) ?? "dd.MM.yyyy"); // retreives correct dateformat from settings
-  TextEditingController textEditingController; // used to change value in textField (because we change date with dialog and not typing it)
+  TextEditingController textEditingController = TextEditingController(); // used to change value in textField (because we change date with dialog and not typing it)
 
   @override
   void initState() {
     super.initState();
-    textEditingController = TextEditingController(
-      text: dateFormat.format(DateTime.now()), // sets current date as initial date to the field
-    );
+
+    final PickedDateState pickedDateState = Provider.of<PickedDateState>(context, listen: false);
+    textEditingController.text = dateFormat.format(pickedDateState.dt); // setting dt.now to field if creating new log, and if editing then the correct one
   }
 
   Future<Null> _selectDate(BuildContext context) async {
@@ -35,7 +35,7 @@ class _DatePickerFieldState extends State<DatePickerField> {
     if (picked != null && picked != pickedDateState.dt) {
       setState(() {
         pickedDateState.setDt(picked); // sets picked dt to provider
-        textEditingController.text = dateFormat.format(picked);
+        textEditingController.text = dateFormat.format(pickedDateState.dt); // setting new dt to textfield
       });
     }
   }

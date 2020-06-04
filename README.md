@@ -4,20 +4,18 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 
 ## Ideas
 
-- ability to edit logs
-- ability to change liters/gallons
-- ability to change miles/kimeters
 - autohide keyboard on main screen
-- datetime field to add_log page
 - auto odometer to fuel_fueld
 - titlebar bottom shadow
 - https://pub.dev/packages/rate_my_app
 - finnish translation
 - test if mpg actually works
-- total fuel tile update units
-- listview update units
 - dateformfield tect edit cursor on top of date pick field?
 - prettify code
+- indicator that you can edit logs
+- overflow when entering edit log
+- change submit button text when editing log
+- setstate when updating log
 
 ### TEST
 

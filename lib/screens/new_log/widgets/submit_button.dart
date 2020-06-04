@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/models/log.dart';
+import 'package:fuel_consumption_tracker/screens/history/history_screen.dart';
 import 'package:fuel_consumption_tracker/state/picked_date_state.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
+import 'package:fuel_consumption_tracker/util/trip_computer.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class SubmitButton extends StatefulWidget {
   final GlobalKey<FormState> formkey;
   final TextEditingController fuelFormController;
   final TextEditingController odometerFormController;
+  final int index;
 
-  SubmitButton(this.formkey, this.fuelFormController, this.odometerFormController);
+  SubmitButton(this.formkey, this.fuelFormController, this.odometerFormController, this.index);
 
   @override
   _SubmitButtonState createState() => _SubmitButtonState();
@@ -70,16 +74,32 @@ class _SubmitButtonState extends State<SubmitButton> {
         );
         saveLog(log);
 
-        updatePrefs(odometer, fuelAmount);
+        // if editing log just recalculate prefs all over again to avoid something going wrong
+        if (widget.index == null) {
+          updatePrefs(odometer, fuelAmount);
+          Get.back(); // goes normally back
 
-        Get.back();
+        } else {
+          TripComputer.recalculateEverything(); // ! FIGURE BETTER WAY HERE
+
+          //! next 3 lines pops the new_log, history_view and recreates history_view. (so we history view recreates). Need to find better way
+          Get.back(); 
+          Get.back(); 
+          Get.to(
+            ThemeConsumer(child: HistoryScreen()),
+          );
+        }
       }
     }
   }
 
   void saveLog(Log log) {
     final logBox = Hive.box(LOGS_BOX);
-    logBox.add(log);
+    if (widget.index == null) {
+      logBox.add(log);
+    } else {
+      logBox.putAt(widget.index, log);
+    }
   }
 
   void updatePrefs(int odometer, double fuelAmount) {
