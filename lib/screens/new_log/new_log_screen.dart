@@ -21,7 +21,6 @@ class _NewLogScreenState extends State<NewLogScreen> {
   // Controllers allow to retrieve text from the field
   final fuelFormController = TextEditingController();
   final odometerFormController = TextEditingController();
-  // ! DISPOSE!
 
   @override
   Widget build(BuildContext context) {
@@ -54,5 +53,12 @@ class _NewLogScreenState extends State<NewLogScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    fuelFormController.dispose();
+    odometerFormController.dispose();
+    super.dispose();
   }
 }

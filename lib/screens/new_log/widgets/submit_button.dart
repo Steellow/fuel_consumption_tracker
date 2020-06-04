@@ -21,8 +21,6 @@ class SubmitButton extends StatefulWidget {
 class _SubmitButtonState extends State<SubmitButton> {
   @override
   Widget build(BuildContext context) {
-    final PickedDateState pickedDateState = Provider.of<PickedDateState>(context, listen: false);
-
     return Expanded(
       child: Center(
         child: Container(
@@ -31,47 +29,52 @@ class _SubmitButtonState extends State<SubmitButton> {
             // backgroundColor: Colors.indigo,
             shape: Styles.roundShape,
             onPressed: () {
-              if (widget.formkey.currentState.validate()) {
-                double fuelAmount = double.tryParse(widget.fuelFormController.text);
-                int odometer = int.tryParse(widget.odometerFormController.text);
-
-                // check that everything OK
-                if (fuelAmount == null) {
-                  // That snackbar is ugly, but doesn't matter since this shouldn't be triggered in the first place
-                  Get.snackbar(
-                    "Error",
-                    "Invalid fuel amount",
-                    snackPosition: SnackPosition.BOTTOM,
-                  );
-                } else if (odometer == null) {
-                  Get.snackbar(
-                    "Error",
-                    "Invalid odometer",
-                    snackPosition: SnackPosition.BOTTOM,
-                  );
-                } else {
-                  // If values are OK save log object and update prefs
-                  final Log log = Log(
-                    pickedDateState.dt, // gets picked dt (default dt.now) from provider
-                    fuelAmount,
-                    odometer,
-                  );
-                  saveLog(log);
-
-                  updatePrefs(odometer, fuelAmount);
-
-                  Get.back();
-                }
-              }
+              onSubmit(context);
             },
             child: Container(
-              // margin: EdgeInsets.all(12),
               child: Text('Submit', style: Styles.whiteBold.copyWith(fontSize: 24)),
             ),
           ),
         ),
       ),
     );
+  }
+
+  void onSubmit(BuildContext context) {
+    final PickedDateState pickedDateState = Provider.of<PickedDateState>(context, listen: false);
+
+    if (widget.formkey.currentState.validate()) {
+      double fuelAmount = double.tryParse(widget.fuelFormController.text);
+      int odometer = int.tryParse(widget.odometerFormController.text);
+
+      // check that everything OK
+      if (fuelAmount == null) {
+        // That snackbar is ugly, but doesn't matter since this shouldn't be triggered in the first place
+        Get.snackbar(
+          "Error",
+          "Invalid fuel amount",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      } else if (odometer == null) {
+        Get.snackbar(
+          "Error",
+          "Invalid odometer",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      } else {
+        // If values are OK save log object and update prefs
+        final Log log = Log(
+          pickedDateState.dt, // gets picked dt (default dt.now) from provider
+          fuelAmount,
+          odometer,
+        );
+        saveLog(log);
+
+        updatePrefs(odometer, fuelAmount);
+
+        Get.back();
+      }
+    }
   }
 
   void saveLog(Log log) {
