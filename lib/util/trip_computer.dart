@@ -24,7 +24,7 @@ abstract class TripComputer {
 
     double averageConsumption = totalFuel / (totalOdo / 100);
 
-    if (averageConsumption.isNaN) {
+    if (averageConsumption.isNaN || averageConsumption == double.infinity) {
       return 0;
     } else {
       return averageConsumption;

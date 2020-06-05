@@ -23,6 +23,12 @@ class _DatePickerFieldState extends State<DatePickerField> {
     textEditingController.text = dateFormat.format(pickedDateState.dt); // setting dt.now to field if creating new log, and if editing then the correct one
   }
 
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
   Future<Null> _selectDate(BuildContext context) async {
     final PickedDateState pickedDateState = Provider.of<PickedDateState>(context, listen: false);
 
@@ -47,6 +53,9 @@ class _DatePickerFieldState extends State<DatePickerField> {
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 0, 28, 28),
       child: TextFormField(
+        readOnly: true, // Can't manually edit the text. There was a bug when you opened the dialog, edit cursor was shown on top of dialog (it should have been behind it) so this line removes to edit cursor completely (showCursor is different)
+        showCursor: false,
+        autocorrect: false,
         controller: textEditingController,
         onTap: () {
           FocusScope.of(context).unfocus(); // Hides keyboard

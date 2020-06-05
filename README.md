@@ -4,18 +4,14 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 
 ## Ideas
 
-- autohide keyboard on main screen
-- auto odometer to fuel_fueld
-- titlebar bottom shadow
-- https://pub.dev/packages/rate_my_app
+- https://pub.dev/packages/rate_my_app (after app is in gPlay)
 - finnish translation
-- test if mpg actually works
-- dateformfield tect edit cursor on top of date pick field?
 - prettify code
 - indicator that you can edit logs
 - overflow when entering edit log
 - change submit button text when editing log
 - setstate when updating log
+- screenshots
 
 ### TEST
 
@@ -27,6 +23,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 
 - indigo to indigogradient?
 - history screen transition
+- titlebar bottom shadow
 
 
 ## stuff
@@ -36,7 +33,7 @@ prefs hive box
     'imperialEnabled' is in prefs instead of settings, because it's more relevant there
 
 
-## things I've learned
+### things I've learned
 
 - Using valuableListenableBuilder for everything is a mess (if the app grows), easier to just implement proper state management
 - Hive is way easier and better than shared_preferences

@@ -18,6 +18,7 @@ class _FuelAmountFieldState extends State<FuelAmountField> {
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 16, 28, 16),
       child: TextFormField(
+        textInputAction: TextInputAction.next,
         controller: widget.textEditingController,
         inputFormatters: [BlacklistingTextInputFormatter(new RegExp('[\\-|\\ |\\,]'))], // Blocks everything expect numbers and dots
         keyboardType: TextInputType.number,
