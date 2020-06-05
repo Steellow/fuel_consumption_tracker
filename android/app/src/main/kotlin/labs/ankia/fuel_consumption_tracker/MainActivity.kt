@@ -1,4 +1,4 @@
-package com.example.fuel_consumption_tracker
+package labs.ankia.fuel_consumption_tracker
 
 import io.flutter.embedding.android.FlutterActivity
 
