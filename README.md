@@ -6,7 +6,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 |-----------------------------------|----------------------------------|---------------------------------------|-------------------------------------------|
 | ![Main screen](/scrnsht/main.png) | ![New log](/scrnsht/new_log.png) | ![History view](/scrnsht/history.png) | ![Settings screen](/scrnsht/settings.png) |
 
-## Ideas
+## Ideas (a.k.a. todo)
 
 - https://pub.dev/packages/rate_my_app (after app is in gPlay)
 - finnish translation
