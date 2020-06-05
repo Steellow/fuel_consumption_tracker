@@ -8,9 +8,6 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - finnish translation
 - prettify code
 - indicator that you can edit logs
-- overflow when entering edit log
-- change submit button text when editing log
-- setstate when updating log
 - screenshots
 
 ### TEST
@@ -24,6 +21,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - indigo to indigogradient?
 - history screen transition
 - titlebar bottom shadow
+- change submit button text when editing log
 
 
 ## stuff

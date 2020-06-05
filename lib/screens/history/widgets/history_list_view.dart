@@ -54,7 +54,9 @@ class _HistoryListViewState extends State<HistoryListView> {
               ThemeConsumer(
                 child: NewLogScreen(index: hiveIndex), // passing hiveIndex so we know where to save the updated log
               ),
-            );
+            ).then((value) {
+              setState(() {}); // Setting state when getting back from edit screen
+            });
           },
           title: Text(log.amount.toString() + TripComputer.getFuelUnit()),
           subtitle: Text(log.odometer.toString() + TripComputer.getLengthUnit()),

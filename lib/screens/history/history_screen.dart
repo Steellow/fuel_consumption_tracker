@@ -11,7 +11,7 @@ class HistoryScreen extends StatelessWidget {
         children: [
           TitleBar(),
           HistoryListView(),
-        ]
+        ],
       ),
     );
   }

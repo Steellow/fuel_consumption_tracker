@@ -82,12 +82,7 @@ class _SubmitButtonState extends State<SubmitButton> {
         } else {
           TripComputer.recalculateEverything(); // ! FIGURE BETTER WAY HERE
 
-          //! next 3 lines pops the new_log, history_view and recreates history_view. (so we history view recreates). Need to find better way
-          Get.back(); 
-          Get.back(); 
-          Get.to(
-            ThemeConsumer(child: HistoryScreen()),
-          );
+          Get.back();
         }
       }
     }
