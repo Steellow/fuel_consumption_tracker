@@ -1,6 +1,10 @@
 # fuel_consumption_tracker
 
-Simple app to track average fuel consumption. Free, minimal, and open source. No bullshit features.
+Simple app to track average fuel consumption. Free, minimal, and open source. No bullshit features. Releasing on gPlay soon.
+
+| Main screen                       | New log/edit log                 | View logs                             | Settings                                  |
+|-----------------------------------|----------------------------------|---------------------------------------|-------------------------------------------|
+| ![Main screen](/scrnsht/main.png) | ![New log](/scrnsht/new_log.png) | ![History view](/scrnsht/history.png) | ![Settings screen](/scrnsht/settings.png) |
 
 ## Ideas
 
@@ -13,6 +17,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 
 - test what whappens if you don't log in order
 - date format picker on smaller screens
+- test on smaller screens
 
 
 ### BUGS
