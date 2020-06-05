@@ -7,7 +7,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - https://pub.dev/packages/rate_my_app (after app is in gPlay)
 - finnish translation
 - prettify code
-- indicator that you can edit logs
+
 
 ### TEST
 
