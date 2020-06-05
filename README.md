@@ -12,6 +12,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - finnish translation
 - prettify code
 - app icon
+- export excel
 
 
 ### TEST
@@ -35,11 +36,12 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - calendar view when tank'd
 
 
+
 ## stuff
 
-prefs hive box
-    'minOdo', 'maxOdo' are smallest and biggest odos recorded
-    'imperialEnabled' is in prefs instead of settings, because it's more relevant there
+- prefs hive box
+    - 'minOdo', 'maxOdo' are smallest and biggest odos recorded
+    - 'imperialEnabled' is in prefs instead of settings, because it's more relevant there
 
 
 ### things I've learned
@@ -48,5 +50,5 @@ prefs hive box
 - Hive is way easier and better than shared_preferences
 - Always make helper class for shared_prefs etc. which automatically returns default values
 - abstract class = can't make instance of that class
-    - static method = called directly from class, not instace
-- making quick n' dirty (fronted) prototype of the app really helps get the ball rolling
+    - static method = called directly from class, not instance
+- making quick n' dirty (frontend) prototype of the app really helps get the ball rolling
