@@ -8,12 +8,16 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - finnish translation
 - prettify code
 - indicator that you can edit logs
-- screenshots
 
 ### TEST
 
 - test what whappens if you don't log in order
 - date format picker on smaller screens
+
+
+### BUGS
+
+- unit_tile doesn't rebuild when resetting everything
 
 
 ### HIFI
@@ -22,6 +26,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - history screen transition
 - titlebar bottom shadow
 - change submit button text when editing log
+- calendar view when tank'd
 
 
 ## stuff
@@ -38,3 +43,4 @@ prefs hive box
 - Always make helper class for shared_prefs etc. which automatically returns default values
 - abstract class = can't make instance of that class
     - static method = called directly from class, not instace
+- making quick n' dirty (fronted) prototype of the app really helps get the ball rolling
