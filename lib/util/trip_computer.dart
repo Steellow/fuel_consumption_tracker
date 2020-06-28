@@ -85,8 +85,6 @@ abstract class TripComputer {
     print("minOdo: " + minOdo.toString());
     print("maxOdo: " + maxOdo.toString());
     print("totalConsumption: " + totalFuel.toString());
-
-    Fluttertoast.showToast(msg: "Success"); // Using 3rd party library because otherwise you would need context
   }
 
   static String getFuelUnit() {
