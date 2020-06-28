@@ -48,21 +48,60 @@ class _HistoryListViewState extends State<HistoryListView> {
       padding: EdgeInsets.symmetric(horizontal: 12),
       child: Card(
         elevation: 4,
-        child: ListTile(
-          onLongPress: () {
-            Get.to(
-              ThemeConsumer(
-                child: NewLogScreen(index: hiveIndex), // passing hiveIndex so we know where to save the updated log
-              ),
-            ).then((value) {
-              setState(() {}); // Setting state when getting back from edit screen
-            });
-          },
-          title: Text(log.amount.toString() + TripComputer.getFuelUnit()),
-          subtitle: Text(log.odometer.toString() + TripComputer.getLengthUnit()),
-          trailing: Text(formattedDate),
+        child: GestureDetector(
+          // Using GestureDetector instead of ListTiles onPress to get onTapDown details (for tap location)
+          onTapDown: _storePosition, // This saves where the tap happened to _tapPosition variable
+          onLongPress: _showOptionsMenu,
+          child: ListTile(
+            title: Text(log.amount.toString() + TripComputer.getFuelUnit()),
+            subtitle: Text(log.odometer.toString() + TripComputer.getLengthUnit()),
+            trailing: Text(formattedDate),
+          ),
         ),
       ),
+    );
+  }
+
+  // showMenu code below this comment is stolen from https://stackoverflow.com/a/54714628
+
+  var _tapPosition;
+
+  void _storePosition(TapDownDetails details) {
+    _tapPosition = details.globalPosition;
+  }
+
+  void _showOptionsMenu() {
+    final RenderBox overlay = Overlay.of(context).context.findRenderObject();
+
+    showMenu(
+      context: context,
+      position: RelativeRect.fromRect(
+        // some magic code from stackoverflow
+        _tapPosition & Size(40, 40),
+        Offset.zero & overlay.size,
+      ),
+      items: [
+        PopupMenuItem(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(Icons.edit),
+              SizedBox(width: 12),
+              Text("Edit"),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(Icons.delete),
+              SizedBox(width: 12),
+              Text("Delete"),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
