@@ -3,6 +3,7 @@ import 'package:fuel_consumption_tracker/screens/main/main_screen.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:flutter/services.dart';
 
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:theme_provider/theme_provider.dart';
@@ -28,6 +29,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    // Disables landscape orientation
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return ThemeProvider(
       themes: [
         AppTheme.light().copyWith(
