@@ -15,7 +15,7 @@ class ResetEverythingTile extends StatelessWidget {
           AlertDialog(
             backgroundColor: Theme.of(context).dialogBackgroundColor,
             title: Text(
-              "Are you sure you want to delete everything?",
+              "Are you sure you want to reset everything?",
               style: TextStyle(
                 color: ThemeTools.getTextColor(),
               ),
