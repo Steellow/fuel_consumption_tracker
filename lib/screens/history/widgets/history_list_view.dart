@@ -116,10 +116,29 @@ class _HistoryListViewState extends State<HistoryListView> {
         setState(() {}); // Setting state when getting back from edit screen
       });
     } else {
-      setState(() {
-        logBox.deleteAt(hiveIndex);
-        TripComputer.recalculateEverything(); // recalculates prefs all over again if deleting log
-      });
+      Get.dialog(
+        AlertDialog(
+          title: Text("Are you sure?"),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text("Cancel"),
+            ),
+            FlatButton(
+              onPressed: () {
+                setState(() {
+                  logBox.deleteAt(hiveIndex);
+                  TripComputer.recalculateEverything(); // recalculates prefs all over again if deleting log
+                });
+                Get.back();
+              },
+              child: Text("Delete"),
+            ),
+          ],
+        ),
+      );
     }
   }
 }
