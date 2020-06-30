@@ -116,7 +116,10 @@ class _HistoryListViewState extends State<HistoryListView> {
         setState(() {}); // Setting state when getting back from edit screen
       });
     } else {
-      print('handle delete');
+      setState(() {
+        logBox.deleteAt(hiveIndex);
+        TripComputer.recalculateEverything(); // recalculates prefs all over again if deleting log
+      });
     }
   }
 }
