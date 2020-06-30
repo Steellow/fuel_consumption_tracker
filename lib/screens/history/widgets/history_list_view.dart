@@ -51,7 +51,9 @@ class _HistoryListViewState extends State<HistoryListView> {
         child: GestureDetector(
           // Using GestureDetector instead of ListTiles onPress to get onTapDown details (for tap location)
           onTapDown: _storePosition, // This saves where the tap happened to _tapPosition variable
-          onLongPress: _showOptionsMenu,
+          onLongPress: () {
+            _showOptionsMenu(hiveIndex);
+          },
           child: ListTile(
             title: Text(log.amount.toString() + TripComputer.getFuelUnit()),
             subtitle: Text(log.odometer.toString() + TripComputer.getLengthUnit()),
@@ -70,18 +72,19 @@ class _HistoryListViewState extends State<HistoryListView> {
     _tapPosition = details.globalPosition;
   }
 
-  void _showOptionsMenu() {
+  Future<void> _showOptionsMenu(int hiveIndex) async {
     final RenderBox overlay = Overlay.of(context).context.findRenderObject();
 
-    showMenu(
+    int selected = await showMenu(
       context: context,
       position: RelativeRect.fromRect(
-        // some magic code from stackoverflow
+        // magic code from stackoverflow, positions the PopupMenu on your tap location
         _tapPosition & Size(40, 40),
         Offset.zero & overlay.size,
       ),
       items: [
         PopupMenuItem(
+          value: 0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -92,6 +95,7 @@ class _HistoryListViewState extends State<HistoryListView> {
           ),
         ),
         PopupMenuItem(
+          value: 1,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -103,5 +107,16 @@ class _HistoryListViewState extends State<HistoryListView> {
         ),
       ],
     );
+    if (selected == 0) {
+      Get.to(
+        ThemeConsumer(
+          child: NewLogScreen(index: hiveIndex), // passing hiveIndex so we know where to save the updated log
+        ),
+      ).then((value) {
+        setState(() {}); // Setting state when getting back from edit screen
+      });
+    } else {
+      print('handle delete');
+    }
   }
 }

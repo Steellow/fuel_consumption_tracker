@@ -13,6 +13,8 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - prettify code
 - export excel
 - history view should be chronological order (currently sorts by added)
+- break history_list_view.dart to multiple files
+- use Get theme changes instead of ThemeConsumer
 
 
 ### TEST
@@ -25,6 +27,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 ### BUGS
 
 - unit_tile doesn't rebuild when resetting everything
+- consumption is sometimes negative when only one log, maybe prefs get messed up when editing logs?
 
 
 ### HIFI
@@ -52,3 +55,4 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - abstract class = can't make instance of that class
     - static method = called directly from class, not instance
 - making quick n' dirty (frontend) prototype of the app really helps get the ball rolling
+- popup menu (especially showMenu method) sucks and shouldn't be used
