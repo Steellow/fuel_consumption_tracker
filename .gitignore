@@ -44,3 +44,4 @@ app.*.map.json
 
 pubspec.lock
 key.jks
+key.properties
