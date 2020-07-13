@@ -23,6 +23,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - test what whappens if you don't log in order
 - date format picker on smaller screens
 - test on smaller screens
+- test on tablets!
 
 
 ### BUGS
