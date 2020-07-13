@@ -12,6 +12,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 - finnish translation
 - prettify code
 - export excel
+    - save to gDrive
 - history view should be chronological order (currently sorts by added)
 - break history_list_view.dart to multiple files
 - use Get theme changes instead of ThemeConsumer
