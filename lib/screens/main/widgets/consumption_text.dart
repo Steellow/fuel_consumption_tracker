@@ -25,7 +25,7 @@ class ConsumptionText extends StatelessWidget {
   String _getConsumptionString() {
     double _consumption = TripComputer.calculateConsumption();
 
-    if (_consumption == double.infinity || _consumption == 0) {
+    if (_consumption == double.infinity || _consumption <= 0) {
       return "Not enough logs";
     }
 
