@@ -7,12 +7,10 @@ class RateAppTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        // StoreRedirect.redirect()
-        // TODO add when actaully published at gPlay
+        StoreRedirect.redirect(androidAppId: 'labs.ankia.fuel_consumption_tracker');
       },
       leading: CenterIcon(Icon(Icons.star)),
       title: Text("Rate app"),
-      subtitle: Text("Coming soon"),
     );
   }
 }

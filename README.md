@@ -8,7 +8,6 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 
 ## Ideas (a.k.a. todo)
 
-- https://pub.dev/packages/rate_my_app (after app is in gPlay)
 - finnish translation
 - prettify code
 - export excel
@@ -30,6 +29,7 @@ Simple app to track average fuel consumption. Free, minimal, and open source. No
 
 - unit_tile doesn't rebuild when resetting everything
 - consumption is sometimes negative when only one log, maybe prefs get messed up when editing logs?
+- Minus consumption when you have 2 logs and delete logs (doesnt recalulcate if you later add new logs)
 
 
 ### HIFI
