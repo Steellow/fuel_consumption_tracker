@@ -115,7 +115,7 @@ class _HistoryListViewState extends State<HistoryListView> {
       ).then((value) {
         setState(() {}); // Setting state when getting back from edit screen
       });
-    } else {
+    } else if(selected == 1) {
       Get.dialog(
         ThemeConsumer(
           child: AlertDialog(
