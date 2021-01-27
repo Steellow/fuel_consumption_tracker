@@ -1,6 +1,6 @@
 # fuel_consumption_tracker
 
-Simple app to track average fuel consumption. Free, minimal, and open source. No bullshit features. [Available on gPlay[(https://play.google.com/store/apps/details?id=labs.ankia.fuel_consumption_tracker).
+Simple app to track average fuel consumption. Free, minimal, and open source. No bullshit features. [Available on gPlay](https://play.google.com/store/apps/details?id=labs.ankia.fuel_consumption_tracker).
 
 | Main screen                       | New log/edit log                 | View logs                             | Settings                                  |
 |-----------------------------------|----------------------------------|---------------------------------------|-------------------------------------------|
