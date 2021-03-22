@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/models/log.dart';
-import 'package:fuel_consumption_tracker/screens/history/history_screen.dart';
 import 'package:fuel_consumption_tracker/state/picked_date_state.dart';
 import 'package:fuel_consumption_tracker/util/hive_keys.dart';
 import 'package:fuel_consumption_tracker/util/styles.dart';
@@ -8,7 +7,6 @@ import 'package:fuel_consumption_tracker/util/trip_computer.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:theme_provider/theme_provider.dart';
 
 class SubmitButton extends StatefulWidget {
   final GlobalKey<FormState> formkey;

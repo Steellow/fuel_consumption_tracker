@@ -5,7 +5,6 @@ import 'package:fuel_consumption_tracker/util/theme_tools.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class DateFormatTile extends StatefulWidget {
@@ -27,13 +26,6 @@ class _DateFormatTileState extends State<DateFormatTile> {
     'MM/dd/yyyy',
     'MM.dd.yyyy',
   ];
-  DateTime now;
-
-  @override
-  void initState() {
-    super.initState();
-    now = DateTime.now();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +36,7 @@ class _DateFormatTileState extends State<DateFormatTile> {
         valueListenable: settings.listenable(keys: [DATE_FORMAT]), // Preview text in the tile, listens to changes in that particular settings
         builder: (BuildContext context, dynamic value, Widget child) {
           String dateFormat = settings.get(DATE_FORMAT) ?? "dd.MM.yyyy";
-          return Text(DateFormat(dateFormat).format(now));
+          return Text(dateFormat);
         },
       ),
       onTap: () {
@@ -59,10 +51,9 @@ class _DateFormatTileState extends State<DateFormatTile> {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: List.generate(dateFormatList.length, (index) {
-                String formattedDate = DateFormat(dateFormatList[index]).format(now);
                 return ListTile(
                   title: Text(
-                    formattedDate,
+                    dateFormatList[index],
                     style: TextStyle(
                       color: ThemeTools.getTextColor(), // Gets right text color for the theme
                     ),
@@ -80,4 +71,3 @@ class _DateFormatTileState extends State<DateFormatTile> {
     );
   }
 }
-
