@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/settings/widgets/settings_subtitle.dart';
+import 'package:fuel_consumption_tracker/screens/settings/widgets/tiles/create_backup_tile.dart';
 
 import 'widgets/tiles/date_format_tile.dart';
 import 'widgets/tiles/rate_app_tile.dart';
@@ -10,8 +11,6 @@ import 'widgets/tiles/theme_tile.dart';
 import 'widgets/tiles/total_fuel_tile.dart';
 import 'widgets/tiles/units_tile.dart';
 
-
-
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,11 +18,11 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         children: [
           SettingsSubtitle("Stats"),
-          TotalFuelTile(), 
+          TotalFuelTile(),
           RecalculateTile(),
           Divider(),
           SettingsSubtitle("General settings"),
-          ThemeTile(), 
+          ThemeTile(),
           UnitsTile(), // Coming Soon
           DateFormatTile(),
           Divider(),
@@ -31,6 +30,7 @@ class SettingsScreen extends StatelessWidget {
           RateAppTile(), // Add when app is on gPlay
           SourceCodeTile(),
           ResetEverythingTile(),
+          CreateBackgupTile(),
         ],
       ),
     );
