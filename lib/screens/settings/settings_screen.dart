@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_consumption_tracker/screens/settings/widgets/settings_subtitle.dart';
 import 'package:fuel_consumption_tracker/screens/settings/widgets/tiles/create_backup_tile.dart';
+import 'package:fuel_consumption_tracker/screens/settings/widgets/tiles/import_backup_tile.dart';
 
 import 'widgets/tiles/date_format_tile.dart';
 import 'widgets/tiles/rate_app_tile.dart';
@@ -31,6 +32,7 @@ class SettingsScreen extends StatelessWidget {
           SourceCodeTile(),
           ResetEverythingTile(),
           CreateBackupTile(),
+          ImportBackupTile(),
         ],
       ),
     );

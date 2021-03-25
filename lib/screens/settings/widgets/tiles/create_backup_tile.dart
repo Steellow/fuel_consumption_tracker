@@ -16,7 +16,7 @@ class CreateBackupTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: _createBackupFileAndShare,
-      leading: CenterIcon(Icon(MdiIcons.cloudUpload)),
+      leading: CenterIcon(Icon(MdiIcons.databaseExport)),
       title: Text("Create backup"),
     );
   }
