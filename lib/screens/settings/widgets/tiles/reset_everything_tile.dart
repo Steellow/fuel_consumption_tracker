@@ -7,6 +7,8 @@ import 'package:hive/hive.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ResetEverythingTile extends StatelessWidget {
+  final Box settings = Hive.box(SETTINGS_BOX);
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -21,19 +23,25 @@ class ResetEverythingTile extends StatelessWidget {
               ),
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text("Cancel"),
                 onPressed: () {
                   Get.back();
                 },
+                style: TextButton.styleFrom(
+                  primary: settings.get(DARK_ENABLED) ? Colors.white : Colors.black,
+                ),
               ),
-              FlatButton(
+              TextButton(
                 child: Text("OK"),
                 onPressed: () {
                   Hive.box(LOGS_BOX).clear();
                   Hive.box(PREFS_BOX).clear();
                   Get.back();
                 },
+                style: TextButton.styleFrom(
+                  primary: settings.get(DARK_ENABLED) ? Colors.white : Colors.black,
+                ),
               ),
             ],
           ),
