@@ -109,13 +109,13 @@ class _HistoryListViewState extends State<HistoryListView> {
     );
     if (selected == 0) {
       Get.to(
-        ThemeConsumer(
+        () => ThemeConsumer(
           child: NewLogScreen(index: hiveIndex), // passing hiveIndex so we know where to save the updated log
         ),
       ).then((value) {
         setState(() {}); // Setting state when getting back from edit screen
       });
-    } else if(selected == 1) {
+    } else if (selected == 1) {
       Get.dialog(
         ThemeConsumer(
           child: AlertDialog(
