@@ -18,7 +18,7 @@ class _ViewHistoryButtonState extends State<ViewHistoryButton> {
         shape: Styles.roundShape,
         onPressed: () {
           Get.to(
-            ThemeConsumer(child: HistoryScreen()),
+            () => ThemeConsumer(child: HistoryScreen()),
           );
         },
         child: Container(

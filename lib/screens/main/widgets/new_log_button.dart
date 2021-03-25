@@ -19,7 +19,7 @@ class _NewLogButtonState extends State<NewLogButton> {
         shape: Styles.roundShape,
         onPressed: () {
           Get.to(
-            ThemeConsumer(
+            () => ThemeConsumer(
               child: NewLogScreen(),
             ),
           );

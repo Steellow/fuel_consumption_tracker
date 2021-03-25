@@ -21,7 +21,7 @@ class _SettingsButtonState extends State<SettingsButton> {
         ),
         onPressed: () {
           Get.to(
-            ThemeConsumer(
+            () => ThemeConsumer(
               child: SettingsScreen(),
             ),
             transition: Transition.cupertino,
