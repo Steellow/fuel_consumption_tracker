@@ -14,8 +14,7 @@ class _ViewHistoryButtonState extends State<ViewHistoryButton> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width / 2,
-      child: FlatButton(
-        shape: Styles.roundShape,
+      child: TextButton(
         onPressed: () {
           Get.to(
             () => ThemeConsumer(child: HistoryScreen()),

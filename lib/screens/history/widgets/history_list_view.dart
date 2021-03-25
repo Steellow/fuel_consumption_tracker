@@ -109,7 +109,8 @@ class _HistoryListViewState extends State<HistoryListView> {
     );
     if (selected == 0) {
       Get.to(
-        () => ThemeConsumer(
+        //! Get recommends using arrow functions but it doesn't work  here for some reason
+        ThemeConsumer(
           child: NewLogScreen(index: hiveIndex), // passing hiveIndex so we know where to save the updated log
         ),
       ).then((value) {
@@ -121,13 +122,16 @@ class _HistoryListViewState extends State<HistoryListView> {
           child: AlertDialog(
             title: Text("Are you sure?"),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   Get.back();
                 },
                 child: Text("Cancel"),
+                style: TextButton.styleFrom(
+                  primary: settings.get(DARK_ENABLED) ? Colors.white : Colors.black,
+                ),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   setState(() {
                     logBox.deleteAt(hiveIndex);
@@ -136,6 +140,9 @@ class _HistoryListViewState extends State<HistoryListView> {
                   Get.back();
                 },
                 child: Text("Delete"),
+                style: TextButton.styleFrom(
+                  primary: settings.get(DARK_ENABLED) ? Colors.white : Colors.black,
+                ),
               ),
             ],
           ),
