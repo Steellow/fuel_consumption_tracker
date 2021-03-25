@@ -30,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
           RateAppTile(), // Add when app is on gPlay
           SourceCodeTile(),
           ResetEverythingTile(),
-          CreateBackgupTile(),
+          CreateBackupTile(),
         ],
       ),
     );

@@ -11,7 +11,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:path_provider/path_provider.dart';
 import 'package:share/share.dart';
 
-class CreateBackgupTile extends StatelessWidget {
+class CreateBackupTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
