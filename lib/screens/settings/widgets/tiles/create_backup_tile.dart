@@ -44,7 +44,8 @@ class CreateBackgupTile extends StatelessWidget {
         logArray.add(logAsJson);
       }
       Map<String, dynamic> backupJson = {
-        'date': now.toString(),
+        'app': 'fuel-consumption-tracker',
+        'backup-date': now.toString(),
         'data': logArray,
       };
 
