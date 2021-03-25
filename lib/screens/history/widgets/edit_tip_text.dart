@@ -11,7 +11,7 @@ class EditTipText extends StatelessWidget {
         child: Opacity(
           opacity: 0.4,
           child: Text(
-            "EDIT LOGS BY LONG-PRESSING THEM",
+            "LONG-PRESS TO EDIT",
             textAlign: TextAlign.center,
             style: Styles.settingsSubtitle,
           ),
