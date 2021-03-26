@@ -1,5 +1,8 @@
 # fuel_consumption_tracker
 
+| ‼️ (Probably) not working! Because new Flutter versions require Android X and the migration didn't work, I decided to suspend this update ‼️ |
+|:--|
+
 Simple app to track average fuel consumption. Free, minimal, and open source. No bullshit features. Releasing on gPlay soon.
 
 | Main screen                       | New log/edit log                 | View logs                             | Settings                                  |
